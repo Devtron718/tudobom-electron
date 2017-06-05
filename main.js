@@ -6,9 +6,25 @@ const url = require('url')
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
-function createWindow () {
+function getWindows () {
   // Create the browser window.
-  win = new BrowserWindow({width: 800, height: 600})
+  win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegrationInWorker: true
+    }
+  })
+
+  if (win.Worker) {
+    var noteFetcher = new Worker('noteFetcher.js');
+  }
+
+  // TODO: make editor input field on index.html
+  editor.onchange = function() {
+    myWorker.postMessage([first.value,second.value]);
+    console.log('Message posted to worker');
+  }
 
   // and load the index.html of the app.
   win.loadURL(url.format({
@@ -32,7 +48,7 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', getWindows)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -47,7 +63,7 @@ app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (win === null) {
-    createWindow()
+    getWindows()
   }
 })
 
