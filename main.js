@@ -6,7 +6,7 @@ const url = require('url')
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
-function getWindows () {
+function loadNotes () {
   // Create the browser window.
   win = new BrowserWindow({
     width: 800,
@@ -20,11 +20,20 @@ function getWindows () {
     var noteFetcher = new Worker('noteFetcher.js');
   }
 
+  // we should load whats in local storage,
+  // in the background fetch,
+  // and then when fetched, post current notes to server to backup
+  // then replace current notes with the fetched ones
+
+  // also need to think about auth at some point
+  noteFetcher.postMessage('get_notes')
+
+  // TODO: super cool if autosaved, but only made it the working version
   // TODO: make editor input field on index.html
-  editor.onchange = function() {
-    myWorker.postMessage([first.value,second.value]);
-    console.log('Message posted to worker');
-  }
+  // editor.onsubmit = function() {
+  //   noteFetcher.postMessage(text);
+  //   console.log('Fetching notes!');
+  // }
 
   // and load the index.html of the app.
   win.loadURL(url.format({
@@ -48,7 +57,7 @@ function getWindows () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', getWindows)
+app.on('ready', loadNotes)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -63,7 +72,7 @@ app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (win === null) {
-    getWindows()
+    loadNotes()
   }
 })
 
