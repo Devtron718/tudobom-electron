@@ -3,11 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <link rel="stylesheet" type="text/css" href="lib/trix.css">
+    <script type="text/javascript" src="lib/trix.js"></script>
   </head>
   <body>
     <h1>Hello World!</h1>
     We are using node <script>document.write(process.versions.node)</script>,
     Chrome <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
+
+    <h2>Lets put text here:</h2>
+    <form>
+      <input id="noteText" value="Some stuuufff!" type="hidden" name="content">
+      <trix-editor input="noteText" class="trix-content"></trix-editor>
+
+    </form>
   </body>
 </html>
