@@ -1,5 +1,8 @@
 // step 1:
   // setup local store for a note (button to save text and window attrs)
+    // save when: lose focus, window closed,
+    // every 5 seconds while working
+    // maybe do these saves in a separate process
 // step 2:
   // set up local storage retrieval:
     // iterate through localStorage fetched notes,
