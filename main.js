@@ -16,22 +16,16 @@ function loadNotes () {
     }
   })
 
-  if (win.Worker) {
-    var noteFetcher = new Worker('noteFetcher.js');
-  }
+  // if (win.Worker) {
+  //   var serverNotesFetcher = new Worker('serverNotesFetcher.js');
+  // }
 
-  // we should load whats in local storage,
-  // in the background fetch,
-  // and then when fetched, post current notes to server to backup
-  // then replace current notes with the fetched ones
-
-  // also need to think about auth at some point
-  noteFetcher.postMessage('get_notes')
+  // serverNotesFetcher.postMessage('get_notes')
 
   // TODO: super cool if autosaved, but only made it the working version
   // TODO: make editor input field on index.html
   // editor.onsubmit = function() {
-  //   noteFetcher.postMessage(text);
+  //   serverNotesFetcher.postMessage(text);
   //   console.log('Fetching notes!');
   // }
 
