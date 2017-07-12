@@ -9,6 +9,7 @@ let win
 function loadNotes () {
   // Create the browser window.
   win = new BrowserWindow({
+    frame: false,
     width: 800,
     height: 600,
     webPreferences: {
