@@ -1,5 +1,3 @@
-
-
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
@@ -18,7 +16,7 @@ function loadNotes () {
       nodeIntegrationInWorker: true
     }
   })
-}))
+
 
   // if (win.Worker) {
   //   var serverNotesFetcher = new Worker('serverNotesFetcher.js');
