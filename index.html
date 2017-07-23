@@ -5,12 +5,14 @@
     <link rel="stylesheet" type="text/css" href="lib/trix.css">
     <script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="lib/trix.js"></script>
+    <link rel="stylesheet" type="text/css" href="tudobom.scss">
   </head>
   <body>
       <script>require('./menu.js')</script>
     <form>
+      <p id="my-toolbar" visibility="hidden"></p>
       <input id="noteText" value="Some stuuufff!" type="hidden" name="content">
-      <trix-editor input="noteText" class="trix-content"></trix-editor>
+      <trix-editor input="noteText" toolbar="my-toolbar" class="trix-content"></trix-editor>
     </form>
   </body>
 </html>

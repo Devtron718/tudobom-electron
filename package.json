@@ -1,5 +1,10 @@
 {
   "name": "tudobom",
   "version": "0.1.0",
-  "main": "app.js"
+  "main": "app.js",
+  "dependencies": {
+    "node-sass": "^4.3.0",
+    "sass-loader": "^4.1.1"
+  }
+
 }

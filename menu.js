@@ -31,6 +31,7 @@ function newNote() {
         frame: false,
         width: 400,
         height: 400,
+        titleBarStyle: "hidden",
         webPreferences: {
           nodeIntegrationInWorker: true
         }
